@@ -1,0 +1,32 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2021-03-09 17:52:32.450531",
+ "disable_prepared_report": 0,
+ "disabled": 1,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2023-03-04 11:10:22.515463",
+ "modified_by": "Administrator",
+ "module": "Qubix",
+ "name": "Pending Purchase Order Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "Purchase Order",
+ "report_name": "Pending Purchase Order Report",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "Stock User"
+  },
+  {
+   "role": "Purchase Manager"
+  },
+  {
+   "role": "Purchase User"
+  }
+ ]
+}

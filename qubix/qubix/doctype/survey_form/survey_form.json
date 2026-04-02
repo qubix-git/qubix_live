@@ -1,0 +1,225 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2021-11-25 12:08:55.796044",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "column_break_2",
+  "visitor_id",
+  "column_break_4",
+  "doctor_name",
+  "column_break_6",
+  "city",
+  "section_break_6",
+  "survey1",
+  "3328a_nylon",
+  "3336a_nylon",
+  "2347a_polyglactin",
+  "1326a_polyglecaprone",
+  "any_other",
+  "remarks",
+  "column_break_14",
+  "section_break_14",
+  "column_break_15",
+  "survey2",
+  "compare_to_polyester",
+  "suggested_surgery",
+  "recommend_as_substitute",
+  "manufacture_uhmwpe",
+  "manufacture_size",
+  "column_break_22",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Survey ID",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "visitor_id",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Visitor ID",
+   "options": "Doctor Registration",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "visitor_id.doctor_name",
+   "fieldname": "doctor_name",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Doctor Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "visitor_id.city",
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "City",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_6",
+   "fieldtype": "Section Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "survey1",
+   "fieldtype": "Select",
+   "label": "Survey1",
+   "options": "Please Select the Sutures that are used for Port Closure"
+  },
+  {
+   "default": "0",
+   "fieldname": "3328a_nylon",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "3328A Nylon Size 3-0, 35cm, 3/8 Circle Reverse Cutting, 26mm",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "3336a_nylon",
+   "fieldtype": "Check",
+   "in_list_view": 1,
+   "label": "3336A Nylon Size 2-0, 35cm, 3/8 Circle Reverse Cutting, 45mm",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "2347a_polyglactin",
+   "fieldtype": "Check",
+   "label": "2347A Polyglactin 910, Size 1, 45cm, 1/2 Circle Round Body Heavy, 40mm",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "1326a_polyglecaprone",
+   "fieldtype": "Check",
+   "label": "1326A Polyglecaprone Size 3-0, 45cm, 3/8 Circle Precision Cutting, 25mm Sharp",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "any_other",
+   "fieldtype": "Check",
+   "label": "Any Other - Please specify the material Suture Size, Length and Needle Description in remarks"
+  },
+  {
+   "depends_on": "eval:doc.any_other == '1'",
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "column_break_14",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_14",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "survey2",
+   "fieldtype": "Select",
+   "label": "Survey2",
+   "options": "Polyethylene Suture"
+  },
+  {
+   "fieldname": "compare_to_polyester",
+   "fieldtype": "Select",
+   "label": "1.Does it compare well with polyester with respect to flexibility, visibility, ease of handling",
+   "options": "Info To Be Collected\nYes\nNo",
+   "reqd": 1
+  },
+  {
+   "default": "Info To Be Collected",
+   "fieldname": "suggested_surgery",
+   "fieldtype": "Data",
+   "label": "2.For which surgery will you find it useful given it has 3X tensile strength compared to Polyester",
+   "reqd": 1
+  },
+  {
+   "fieldname": "recommend_as_substitute",
+   "fieldtype": "Select",
+   "label": "3.Would you recommend usage of these sutures as a substitute to Polyester Suture",
+   "options": "Info To Be Collected\nYes\nNo",
+   "reqd": 1
+  },
+  {
+   "fieldname": "manufacture_uhmwpe",
+   "fieldtype": "Select",
+   "label": "4.Would you like us to manufacture UHMWPE for other sizes too",
+   "options": "Info To Be Collected\nYes\nNo",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.manufacture_uhmwpe == 'Yes'",
+   "fieldname": "manufacture_size",
+   "fieldtype": "Small Text",
+   "label": "5.If yes, what should be the Size"
+  },
+  {
+   "fieldname": "column_break_22",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Survey Form",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-10-12 10:26:22.708498",
+ "modified_by": "Administrator",
+ "module": "Qubix",
+ "name": "Survey Form",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

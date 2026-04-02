@@ -1,0 +1,67 @@
+[
+    {
+     "docstatus": 0,
+     "doctype": "Client Script",
+     "dt": "Stock Entry",
+     "enabled": 1,
+     "modified": "2021-06-03 11:14:37.690720",
+     "name": "Stock Entry-Form",
+     "parent": null,
+     "parentfield": null,
+     "parenttype": null,
+     "script": "frappe.ui.form.on('Stock Entry', {\n\tsetup: function(frm){\n\t    frm.set_query('batch_no', 'items', function(doc, cdt, cdn) {\n\t\t\tvar item = locals[cdt][cdn];\n\t\t\tif(!item.item_code) {\n\t\t\t\tfrappe.throw(__(\"Please enter Item Code to get Batch Number\"));\n\t\t\t} else {\n\t\t\t\tif (in_list([\"Material Transfer for Manufacture\", \"Manufacture\", \"Repack\", \"Send to Subcontractor\"], doc.purpose)) {\n\t\t\t\t\tvar filters = {\n\t\t\t\t\t\t'item_code': item.item_code,\n\t\t\t\t\t\t'posting_date': ['<=', frm.doc.posting_date]\n\t\t\t\t\t}\n\t\t\t\t} else {\n\t\t\t\t\tvar filters = {\n\t\t\t\t\t\t'item_code': item.item_code\n\t\t\t\t\t}\n\t\t\t\t}\n\n\n\t\t\t\treturn {\n\t\t\t\t\tquery : \"erpnext.controllers.queries.get_batch_no\",\n\t\t\t\t\tfilters: filters\n\t\t\t\t}\n\t\t\t}\n\t\t});\n\t\t\n        frm.set_query('batch', () => {\n\t\t\treturn {\n\t\t\t\tfilters: {\n\t\t\t\t\tworkflow_state: 'Approved'\n\t\t\t\t}\n\t\t\t}\n\t\t});\n\t\t \n\t\n\t}\n})",
+     "view": "Form"
+    },
+    {
+     "docstatus": 0,
+     "doctype": "Client Script",
+     "dt": "Job Card",
+     "enabled": 1,
+     "modified": "2021-05-27 11:44:15.164064",
+     "name": "Job Card-Form",
+     "parent": null,
+     "parentfield": null,
+     "parenttype": null,
+     "script": "frappe.ui.form.on('Job Card', {\n    onload:function(frm){\n\t    var products_list;\n\t    frappe.call({\n\t        type: 'GET',\n\t        url: '/api/method/get_items_under_products',\n\t        async: false,\n\t        callback: function(r){\n\t            products_list = r.message;\n\t        }\n\t    })\n        frm.set_query('batch_no', () => {\n\t\t\treturn {\n\t\t\t\tfilters: {\n\t\t\t\t\titem: ['in', products_list],\n\t\t\t\t\tworkflow_state: 'Approved'\n\t\t\t\t}\n\t\t\t}\n\t\t});\n    },\n    \n\tstart_job: function(frm) {\n\t\tlet row = frappe.model.add_child(frm.doc, 'Job Card Time Log', 'time_logs');\n\t\tfrappe.db.get_value(\"Employee\",frm.doc.employee,\"employee_name\",(c)=>{\n\t\trow.employee=c.employee_name;\n\t\trow.completed_qty = 0;\n\t\t})\n\t\trow.from_time = frappe.datetime.now_datetime();\n\t\tfrm.set_value('job_started', 1);\n\t\tfrm.set_value('started_time' , row.from_time);\n\t\tfrm.set_value(\"status\", \"Work In Progress\");\n\n\t\tif (!frappe.flags.resume_job) {\n\t\t\tfrm.set_value('current_time' , 0);\n\t\t}\n\t\tfrm.save();\n\t}\n});\n\nfrappe.ui.form.on('Job Card Time Log', {\n\tpcs_completed: function(frm, cdt, cdn){\n\t    var row = locals[cdt][cdn];\n\t    if(row.pcs_completed != undefined){\n\t        var completed_qty = row.pcs_completed / 12;\n\t        frappe.model.set_value(cdt, cdn, \"completed_qty\", completed_qty);\n\t    }\n\t    frm.refresh_field('completed_qty');\n\t}\n})",
+     "view": "Form"
+    },
+    {
+     "docstatus": 0,
+     "doctype": "Client Script",
+     "dt": "Batch",
+     "enabled": 1,
+     "modified": "2021-05-27 11:45:36.730853",
+     "name": "Batch-Form",
+     "parent": null,
+     "parentfield": null,
+     "parenttype": null,
+     "script": "frappe.ui.form.on('Batch', {\n\titem: function(frm) {\n\t    fetch_mrp(frm);\n\t},\n\t\n\tmanufacturing_date: function(frm){\n\t    fetch_mrp(frm);\n\t}\n})\n\nfunction fetch_mrp(frm){\n    if(frm.doc.item != undefined){\n        frappe.db.get_value(\"Item Price\", {'item_code': frm.doc.item, 'selling': 1, 'valid_from': ['<', frm.doc.manufacturing_date], 'valid_upto': ['>=', frm.doc.manufacturing_date]}, \"price_list_rate\",(c)=>{\n\t\t    if(c.price_list_rate != undefined){\n    \t\t    frm.set_value('mrp', c.price_list_rate);\n\t\t        frm.refresh_field('mrp');\n\t\t    }else{\n\t\t        frm.set_value('mrp', 0);\n\t\t        frm.refresh_field('mrp');\n\t\t    }\n\t    })\n    }\n}",
+     "view": "Form"
+    },
+    {
+     "docstatus": 0,
+     "doctype": "Client Script",
+     "dt": "Work Order",
+     "enabled": 1,
+     "modified": "2021-05-27 11:44:23.834082",
+     "name": "Work Order-Form",
+     "parent": null,
+     "parentfield": null,
+     "parenttype": null,
+     "script": "frappe.ui.form.on('Work Order', {\n\tonload:function(frm){\n\t    var products_list;\n\t    frappe.call({\n\t        type: 'GET',\n\t        url: '/api/method/get_items_under_products',\n\t        async: false,\n\t        callback: function(r){\n\t            products_list = r.message;\n\t        }\n\t    })\n        frm.set_query('batch_no', () => {\n\t\t\treturn {\n\t\t\t\tfilters: {\n\t\t\t\t\titem: ['in', products_list],\n\t\t\t\t\tworkflow_state: 'Approved'\n\t\t\t\t}\n\t\t\t}\n\t\t});\n    }\n})",
+     "view": "Form"
+    },
+    {
+     "docstatus": 0,
+     "doctype": "Client Script",
+     "dt": "Delivery Note",
+     "enabled": 1,
+     "modified": "2021-06-03 13:41:26.937776",
+     "name": "Delivery Note-Form",
+     "parent": null,
+     "parentfield": null,
+     "parenttype": null,
+     "script": "frappe.ui.form.on('Delivery Note', {\n\tonload: function(frm) {\n\t\tfrm.set_query('batch_no', 'items', function(doc, cdt, cdn) {\n\t\t\tvar item = locals[cdt][cdn];\n\t\t\tif(!item.item_code) {\n\t\t\t\tfrappe.throw(__(\"Please enter Item Code to get Batch Number\"));\n\t\t\t} else {\n\t\t\t\tvar filters = {\n\t\t\t\t\t\t'item_code': item.item_code\n\t\t\t\t\t}\n\t\t\t\treturn {\n\t\t\t\t\tquery : \"erpnext.controllers.queries.get_batch_no\",\n\t\t\t\t\tfilters: filters\n\t\t\t\t}\n\t\t\t}\n\t\t});\n\t}\n})\n\nfrappe.ui.form.on('Delivery Note Item', {\n\tbatch_no: function(frm, cdt, cdn) {\n\t    var row = locals[cdt][cdn];\n\t\tif(row.batch_no != undefined){\n            frappe.db.get_value(\"Batch\", {'name': row.batch_no}, \"mrp\",(c)=>{\n    \t\t    if(c.mrp != undefined){\n        \t\t    frappe.model.set_value(cdt, cdn, 'rate', c.mrp);\n    \t\t        frm.refresh_field('rate');\n    \t\t    }\n    \t    })\n        }\n\t}\n})",
+     "view": "Form"
+    }
+   ]

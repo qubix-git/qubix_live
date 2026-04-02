@@ -1,0 +1,57 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:accident_insurance_name",
+ "creation": "2021-03-09 14:53:59.127193",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "accident_insurance_name"
+ ],
+ "fields": [
+  {
+   "fieldname": "accident_insurance_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Accident Insurance Name",
+   "reqd": 1,
+   "unique": 1
+  }
+ ],
+ "links": [],
+ "modified": "2021-03-09 14:53:59.127193",
+ "modified_by": "Administrator",
+ "module": "Qubix",
+ "name": "Accident Insurance Policy",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1
+  }
+ ],
+ "quick_entry": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "title_field": "accident_insurance_name",
+ "track_changes": 1
+}

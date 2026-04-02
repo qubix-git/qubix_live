@@ -1,0 +1,100 @@
+[
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2021-03-16 07:15:06.139812",
+  "module": "Qubix",
+  "name": "Item vs Supplier Report",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": "SELECT \npr.name as \"Purchase Receipt:Link/Purchase Receipt::150\",\npri.item_code as \"Item Code:Link/Item::120\",\npri.item_name as \"Item Name::150\",\npri.rate as \"Rate::120\",\npri.amount as \"Amount::120\",\npr.supplier as \"Vendor:Link/Supplier::150\",\npr.posting_date as \"GRN Date::120\",\npo.name as \"Purchase Order:Link/Purchase Order:::180\",\npo.transaction_date as \"Purchase Order Date::160\",\npoi.qty as \"Ordered Qty::120\",\npri.qty as \"Accepted Qty::120\",\npr.remark as \"Remarks::150\"\nfrom `tabPurchase Receipt` pr\nLEFT JOIN `tabPurchase Receipt Item` pri\nON pr.name=pri.parent\nLEFT JOIN `tabPurchase Order` po\nON po.name=pri.purchase_order\nLEFT JOIN `tabPurchase Order Item` poi\nON poi.parent=po.name\nWHERE pr.posting_date >=%(from_date)s AND pr.posting_date <=%(to_date)s",
+  "ref_doctype": "Purchase Receipt",
+  "reference_report": null,
+  "report_name": "Item vs Supplier Report",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Item vs Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock Manager"
+   },
+   {
+    "parent": "Item vs Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Item vs Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   },
+   {
+    "parent": "Item vs Supplier Report",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Accounts User"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2021-03-26 11:01:25.399387",
+  "module": "Qubix",
+  "name": "Safety Stock vs Purchase Receipt",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "prepared_report": 0,
+  "query": "SELECT\npo.name as \"Purchase Order:Link/Purchase Order::170\",\npoi.item_code as \"Item Code:Link/Item::150\",\npoi.item_name as \"Item Name::150\",\npoi.qty as \"Purchase Order Qty::150\",\nir.warehouse_reorder_qty as \"Reorder Qty::150\",\n(poi.qty - ir.warehouse_reorder_qty) as \"Additional Qty::130\",\nir.warehouse as \"Requested Warehouse\",\npri.qty as \"Accepted Quantity::150\"\nfrom `tabPurchase Order` po\nLEFT JOIN `tabPurchase Order Item` poi\nON poi.parent=po.name\nLEFT JOIN `tabItem Reorder` ir\nON (ir.parent=poi.item_code AND ir.warehouse=poi.warehouse)\nLEFT JOIN `tabPurchase Receipt Item` pri\nON pri.purchase_order=po.name",
+  "ref_doctype": "Purchase Order",
+  "reference_report": null,
+  "report_name": "Safety Stock vs Purchase Receipt",
+  "report_script": null,
+  "report_type": "Query Report",
+  "roles": [
+   {
+    "parent": "Safety Stock vs Purchase Receipt",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Safety Stock vs Purchase Receipt",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Safety Stock vs Purchase Receipt",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   }
+  ]
+ }
+]

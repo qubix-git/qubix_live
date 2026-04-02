@@ -1,0 +1,76 @@
+{
+ "add_total_row": 1,
+ "columns": [],
+ "creation": "2022-07-07 09:06:38.431322",
+ "disable_prepared_report": 0,
+ "disabled": 1,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letter_head": "Qubix_LH2",
+ "modified": "2022-07-15 07:12:55.360752",
+ "modified_by": "Administrator",
+ "module": "Qubix",
+ "name": "Staplers and Sutures Daily Sales",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "Select\n'Stapler' item_code,\nsum(`tabSales Invoice Item`.qty) as \"Quantity:Float/Quantity:200\",\nsum(ROUND(`tabSales Invoice Item`.base_net_amount,0)) as \"Amount:Currency/Amount:200\"\nfrom `tabSales Invoice Item`\nleft join `tabSales Invoice` on `tabSales Invoice`.`name` = `tabSales Invoice Item`.`parent`\nWhere\n`tabSales Invoice`.docstatus=1\nand Item_code=\"SS35W\"\nand `tabSales Invoice`.`posting_date` BETWEEN %(from_date)s AND %(to_date)s\nunion\nSelect\n'Sutures' item_code,\nsum(`tabSales Invoice Item`.qty) as \"Quantity:Float/Quantity:200\",\nsum(ROUND(`tabSales Invoice Item`.base_net_amount,0)) as \"Amount:Currency/Amount:200\"\nfrom `tabSales Invoice Item`\nleft join `tabSales Invoice` on `tabSales Invoice`.`name` = `tabSales Invoice Item`.`parent`\nWhere\n`tabSales Invoice`.docstatus=1\nand Item_code!=\"SS35W\"\nand `tabSales Invoice`.`posting_date` BETWEEN %(from_date)s AND %(to_date)s",
+ "ref_doctype": "Sales Invoice",
+ "report_name": "Staplers and Sutures Daily Sales",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "Accounts Manager"
+  },
+  {
+   "role": "Accounts User"
+  },
+  {
+   "role": "Sales User"
+  },
+  {
+   "role": "Stockist"
+  },
+  {
+   "role": "BDE"
+  },
+  {
+   "role": "ASM"
+  },
+  {
+   "role": "Marketing Support"
+  },
+  {
+   "role": "PMT"
+  },
+  {
+   "role": "MSO"
+  },
+  {
+   "role": "Stock Manager"
+  },
+  {
+   "role": "MSO Master"
+  },
+  {
+   "role": "Front Office"
+  },
+  {
+   "role": "Sales Manager"
+  },
+  {
+   "role": "MSO Super Master"
+  },
+  {
+   "role": "Production Manager"
+  },
+  {
+   "role": "Sales D"
+  },
+  {
+   "role": "Auditor"
+  }
+ ]
+}

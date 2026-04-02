@@ -1,0 +1,363 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2021-11-25 10:18:33.795245",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "doctor_name",
+  "gender",
+  "mobile",
+  "email",
+  "speciality",
+  "date_of_birth",
+  "image",
+  "column_break_9",
+  "hospital_name",
+  "designation",
+  "address",
+  "pincode",
+  "city",
+  "state",
+  "stockist",
+  "stockist_name",
+  "stockist_city",
+  "column_break_15",
+  "referral_doctor_name",
+  "referral_doctor_mobile",
+  "referral_doctor_hospital",
+  "referral_doctor_hospital_city",
+  "conference_name",
+  "visit_date",
+  "naming_series",
+  "salutation",
+  "section_break_25",
+  "order_item_details",
+  "section_break_27",
+  "column_break_28",
+  "total_qty",
+  "remarks",
+  "mode_of_payment",
+  "payment_ref_no",
+  "column_break_32",
+  "gross_amount",
+  "gst_amount",
+  "net_amount",
+  "rounded_amount",
+  "advance_received",
+  "balance_due",
+  "section_break_39",
+  "sample_item_details",
+  "column_break_41",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "fieldname": "doctor_name",
+   "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Doctor/Dealer Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "gender",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Gender",
+   "options": "Gender",
+   "reqd": 1
+  },
+  {
+   "fieldname": "mobile",
+   "fieldtype": "Data",
+   "in_standard_filter": 1,
+   "label": "Mobile",
+   "length": 10,
+   "reqd": 1
+  },
+  {
+   "fieldname": "email",
+   "fieldtype": "Data",
+   "label": "Email",
+   "options": "Email"
+  },
+  {
+   "fieldname": "speciality",
+   "fieldtype": "Link",
+   "label": "Speciality",
+   "options": "Doctor Speciality",
+   "reqd": 1
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "hidden": 1,
+   "label": "Image"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "hospital_name",
+   "fieldtype": "Data",
+   "label": "Hospital/Company Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "designation",
+   "fieldtype": "Select",
+   "label": "Designation",
+   "options": "\nDoctor\nSurgeon\nVisiting Surgeon\nPG Interns\nOT Staff\nOT Technician\nOT Incharge\nPurchase Incharge\nStores Incharge"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Data",
+   "label": "Address"
+  },
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Pincode",
+   "length": 6
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Link",
+   "label": "City",
+   "options": "City",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "city.state",
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State",
+   "read_only": 1
+  },
+  {
+   "fieldname": "stockist",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "To be Supplied through Stockist",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "stockist.customer_name",
+   "fieldname": "stockist_name",
+   "fieldtype": "Data",
+   "label": "Stockist Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "stockist.city",
+   "fieldname": "stockist_city",
+   "fieldtype": "Link",
+   "label": "Stockist City",
+   "options": "City",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_15",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "referral_doctor_name",
+   "fieldtype": "Data",
+   "label": "Referral Doctor Name"
+  },
+  {
+   "fieldname": "referral_doctor_mobile",
+   "fieldtype": "Data",
+   "label": "Referral Doctor Mobile"
+  },
+  {
+   "fieldname": "referral_doctor_hospital",
+   "fieldtype": "Data",
+   "label": "Referral Doctor Hospital"
+  },
+  {
+   "fieldname": "referral_doctor_hospital_city",
+   "fieldtype": "Link",
+   "label": "Referral Doctor Hospital City",
+   "options": "City"
+  },
+  {
+   "fieldname": "conference_name",
+   "fieldtype": "Link",
+   "label": "Conference Name",
+   "options": "Campaign",
+   "reqd": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "visit_date",
+   "fieldtype": "Date",
+   "label": "Visit Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Visitor ID",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "default": "Dr",
+   "fieldname": "salutation",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "in_list_view": 1,
+   "label": "Salutation",
+   "options": "Salutation",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_25",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "order_item_details",
+   "fieldtype": "Table",
+   "label": "Order Item Details",
+   "options": "Campaign Order Items"
+  },
+  {
+   "fieldname": "section_break_27",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_28",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_qty",
+   "fieldtype": "Int",
+   "label": "Total Qty"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "mode_of_payment",
+   "fieldtype": "Link",
+   "label": "Mode of Payment",
+   "options": "Mode of Payment"
+  },
+  {
+   "depends_on": "eval:doc.mode_of_payment",
+   "fieldname": "payment_ref_no",
+   "fieldtype": "Data",
+   "label": "Payment Ref No"
+  },
+  {
+   "fieldname": "column_break_32",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gross_amount",
+   "fieldtype": "Currency",
+   "label": "Gross Amount",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gst_amount",
+   "fieldtype": "Currency",
+   "label": "GST Amount",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "net_amount",
+   "fieldtype": "Currency",
+   "label": "Net Amount",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "rounded_amount",
+   "fieldtype": "Currency",
+   "label": "Rounded Amount",
+   "precision": "2"
+  },
+  {
+   "depends_on": "eval:doc.mode_of_payment",
+   "fieldname": "advance_received",
+   "fieldtype": "Currency",
+   "label": "Advance Received",
+   "precision": "2"
+  },
+  {
+   "fieldname": "balance_due",
+   "fieldtype": "Currency",
+   "label": "Balance Due",
+   "precision": "2",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_39",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sample_item_details",
+   "fieldtype": "Table",
+   "label": "Sample Item Details",
+   "options": "Campaign Sample Items"
+  },
+  {
+   "fieldname": "column_break_41",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Doctor Registration",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "image_field": "image",
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-10-12 10:27:15.692255",
+ "modified_by": "Administrator",
+ "module": "Qubix",
+ "name": "Doctor Registration",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "salutation,doctor_name,gender,speciality,city",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

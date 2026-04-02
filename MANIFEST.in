@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include qubix *.css
+recursive-include qubix *.csv
+recursive-include qubix *.html
+recursive-include qubix *.ico
+recursive-include qubix *.js
+recursive-include qubix *.json
+recursive-include qubix *.md
+recursive-include qubix *.png
+recursive-include qubix *.py
+recursive-include qubix *.svg
+recursive-include qubix *.txt
+recursive-exclude qubix *.pyc

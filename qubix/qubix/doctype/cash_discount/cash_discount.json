@@ -1,0 +1,49 @@
+{
+ "actions": [],
+ "autoname": "field:discount_type",
+ "creation": "2022-01-21 19:17:29.444688",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "discount_type",
+  "discount_percentage"
+ ],
+ "fields": [
+  {
+   "fieldname": "discount_type",
+   "fieldtype": "Data",
+   "label": "Discount Type",
+   "unique": 1
+  },
+  {
+   "fieldname": "discount_percentage",
+   "fieldtype": "Float",
+   "label": "Discount Percentage"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2022-10-11 11:18:51.096049",
+ "modified_by": "Administrator",
+ "module": "Qubix",
+ "name": "Cash Discount",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,153 @@
+{
+ "actions": [],
+ "autoname": "field:shipping_bill_number",
+ "creation": "2021-03-09 15:10:17.434044",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "shipping_bill_number",
+  "shipping_bill_date",
+  "customer",
+  "customer_name",
+  "license_number",
+  "license_date",
+  "country",
+  "currency",
+  "column_break_9",
+  "invoice_number",
+  "invoice_date",
+  "amount_in_fc",
+  "amount_in_dc",
+  "air_way_bill_no",
+  "air_way_bill_date",
+  "epcg_number",
+  "firc_number",
+  "firc_date"
+ ],
+ "fields": [
+  {
+   "fieldname": "shipping_bill_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Shipping Bill Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "shipping_bill_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Shipping Bill Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "license_number",
+   "fieldtype": "Data",
+   "label": "License Number"
+  },
+  {
+   "fieldname": "license_date",
+   "fieldtype": "Date",
+   "label": "License Date"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "invoice_number",
+   "fieldtype": "Data",
+   "label": "Invoice Number"
+  },
+  {
+   "fieldname": "invoice_date",
+   "fieldtype": "Date",
+   "label": "Invoice Date"
+  },
+  {
+   "fieldname": "amount_in_fc",
+   "fieldtype": "Data",
+   "label": "Amount in FC"
+  },
+  {
+   "fieldname": "amount_in_dc",
+   "fieldtype": "Data",
+   "label": "Amount in DC"
+  },
+  {
+   "fieldname": "air_way_bill_no",
+   "fieldtype": "Data",
+   "label": "Air Way Bill No"
+  },
+  {
+   "fieldname": "air_way_bill_date",
+   "fieldtype": "Date",
+   "label": "Air Way Bill Date"
+  },
+  {
+   "fieldname": "epcg_number",
+   "fieldtype": "Data",
+   "label": "EPCG Number"
+  },
+  {
+   "fieldname": "firc_number",
+   "fieldtype": "Data",
+   "label": "FIRC Number"
+  },
+  {
+   "fieldname": "firc_date",
+   "fieldtype": "Date",
+   "label": "FIRC Date"
+  },
+  {
+   "fieldname": "column_break_9",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-03-12 14:48:43.320362",
+ "modified_by": "Administrator",
+ "module": "Qubix",
+ "name": "Export",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,62 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2021-04-12 18:11:31.189034",
+  "name": "Sent for Approval",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "workflow_action_name": "Sent for Approval"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2021-03-04 14:51:42.597525",
+  "name": "Approve",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "workflow_action_name": "Approve"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2021-03-04 14:51:42.675171",
+  "name": "Reject",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "workflow_action_name": "Reject"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2021-03-04 14:51:42.685312",
+  "name": "Review",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "workflow_action_name": "Review"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2021-03-04 16:43:54.112364",
+  "name": "Cancel",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "workflow_action_name": "Cancel"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Workflow Action Master",
+  "modified": "2021-05-31 12:39:49.205975",
+  "name": "Close",
+  "parent": null,
+  "parentfield": null,
+  "parenttype": null,
+  "workflow_action_name": "Close"
+ }
+]

@@ -1,0 +1,63 @@
+{
+ "actions": [],
+ "autoname": "field:supplier",
+ "creation": "2021-03-15 12:07:31.697202",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "supplier",
+  "remarks",
+  "column_break_3",
+  "ratings"
+ ],
+ "fields": [
+  {
+   "fieldname": "supplier",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Supplier",
+   "options": "Supplier",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Long Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "column_break_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "ratings",
+   "fieldtype": "Rating",
+   "label": "Ratings"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2021-03-15 12:08:30.588581",
+ "modified_by": "Administrator",
+ "module": "Qubix",
+ "name": "Vendor Evaluation",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

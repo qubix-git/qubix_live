@@ -1,0 +1,289 @@
+{
+ "actions": [],
+ "allow_import": 1,
+ "autoname": "naming_series:",
+ "creation": "2021-08-12 20:39:07.728387",
+ "doctype": "DocType",
+ "document_type": "Document",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "employee",
+  "employee_name",
+  "visit_date",
+  "jointly_working_with",
+  "lead",
+  "lead_name",
+  "lead_territory",
+  "daddress",
+  "purpose_of_visit",
+  "employee_lead_date",
+  "remarks",
+  "column_break_13",
+  "previous_visit",
+  "oaddress",
+  "latitude",
+  "longitude",
+  "accuracy",
+  "door_street_no",
+  "premise",
+  "neighbor",
+  "road_no",
+  "sub_locality2",
+  "sub_locality1",
+  "city",
+  "district",
+  "pincode",
+  "state",
+  "country",
+  "distance",
+  "distance_in_mtrs",
+  "distance_in_kms",
+  "google_maps",
+  "contacts_visited_section",
+  "contact_visit_details",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Data",
+   "label": "Series",
+   "read_only": 1
+  },
+  {
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "visit_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Visit Date",
+   "read_only": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "jointly_working_with",
+   "fieldtype": "Link",
+   "label": "Jointly Working With",
+   "options": "Sales Person"
+  },
+  {
+   "fieldname": "lead",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Lead Visited",
+   "options": "Lead",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "lead.company_name",
+   "fieldname": "lead_name",
+   "fieldtype": "Data",
+   "label": "Lead Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "lead.territory",
+   "fieldname": "lead_territory",
+   "fieldtype": "Link",
+   "label": "Lead Territory",
+   "options": "Territory",
+   "read_only": 1
+  },
+  {
+   "fieldname": "daddress",
+   "fieldtype": "Data",
+   "label": "Lead Address",
+   "read_only": 1
+  },
+  {
+   "fieldname": "purpose_of_visit",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Purpose of Visit",
+   "options": "Visit Types",
+   "reqd": 1
+  },
+  {
+   "fieldname": "employee_lead_date",
+   "fieldtype": "Data",
+   "label": "Employee Lead Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "column_break_13",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "previous_visit",
+   "fieldtype": "Link",
+   "label": "Previous Visit",
+   "options": "Visit Entry"
+  },
+  {
+   "fieldname": "oaddress",
+   "fieldtype": "Data",
+   "label": "OAddress"
+  },
+  {
+   "fieldname": "latitude",
+   "fieldtype": "Float",
+   "label": "Latitude",
+   "precision": "9"
+  },
+  {
+   "fieldname": "longitude",
+   "fieldtype": "Float",
+   "label": "Longitude",
+   "precision": "9"
+  },
+  {
+   "fieldname": "accuracy",
+   "fieldtype": "Float",
+   "label": "Accuracy",
+   "precision": "9"
+  },
+  {
+   "fieldname": "door_street_no",
+   "fieldtype": "Data",
+   "label": "Door Street No"
+  },
+  {
+   "fieldname": "premise",
+   "fieldtype": "Data",
+   "label": "Premise"
+  },
+  {
+   "fieldname": "neighbor",
+   "fieldtype": "Data",
+   "label": "Neighbor"
+  },
+  {
+   "fieldname": "road_no",
+   "fieldtype": "Data",
+   "label": "Road No"
+  },
+  {
+   "fieldname": "sub_locality2",
+   "fieldtype": "Data",
+   "label": "Sub Locality2"
+  },
+  {
+   "fieldname": "sub_locality1",
+   "fieldtype": "Data",
+   "label": "Sub Locality1"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "district",
+   "fieldtype": "Data",
+   "label": "District"
+  },
+  {
+   "fieldname": "pincode",
+   "fieldtype": "Data",
+   "label": "Pincode"
+  },
+  {
+   "fieldname": "state",
+   "fieldtype": "Data",
+   "label": "State"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Data",
+   "label": "Country"
+  },
+  {
+   "fieldname": "distance",
+   "fieldtype": "Float",
+   "label": "Distance"
+  },
+  {
+   "fieldname": "distance_in_mtrs",
+   "fieldtype": "Float",
+   "label": "Distance in Mtrs"
+  },
+  {
+   "fieldname": "distance_in_kms",
+   "fieldtype": "Float",
+   "label": "Distance in Kms",
+   "precision": "2"
+  },
+  {
+   "fieldname": "google_maps",
+   "fieldtype": "HTML",
+   "label": "Google Maps",
+   "options": "<div id=\"map\" style=\"width: 100%; height: 380px;\"></div>"
+  },
+  {
+   "fieldname": "contacts_visited_section",
+   "fieldtype": "Section Break",
+   "label": "Contacts Visited"
+  },
+  {
+   "fieldname": "contact_visit_details",
+   "fieldtype": "Table",
+   "label": "Contact Visit Details",
+   "options": "Contact Visit Details"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Visit Entry",
+   "print_hide": 1,
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2022-10-12 10:26:19.822379",
+ "modified_by": "Administrator",
+ "module": "Qubix",
+ "name": "Visit Entry",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "track_changes": 1
+}

@@ -1,0 +1,35 @@
+diff --git erpnext/stock/doctype/pick_list/pick_list.py erpnext/stock/doctype/pick_list/pick_list.py
+index 0da57b7..5e2ed92 100644
+--- erpnext/stock/doctype/pick_list/pick_list.py
++++ erpnext/stock/doctype/pick_list/pick_list.py
+@@ -380,7 +380,7 @@ def create_stock_entry(pick_list):
+ 
+ 	stock_entry.set_incoming_rate()
+ 	stock_entry.set_actual_qty()
+-	stock_entry.calculate_rate_and_amount(update_finished_item_rate=False)
++	stock_entry.calculate_rate_and_amount(reset_outgoing_rate=False)
+ 
+ 	return stock_entry.as_dict()
+ 
+diff --git erpnext/stock/doctype/stock_entry/stock_entry.py erpnext/stock/doctype/stock_entry/stock_entry.py
+index d77b70f..a168bf9 100644
+--- erpnext/stock/doctype/stock_entry/stock_entry.py
++++ erpnext/stock/doctype/stock_entry/stock_entry.py
+@@ -399,6 +399,17 @@ class StockEntry(StockController):
+ 			if fg_qty_already_entered and fg_qty_already_entered >= qty:
+ 				frappe.throw(_("Stock Entries already created for Work Order ")
+ 					+ self.work_order + ":" + ", ".join(other_ste), DuplicateEntryForWorkOrderError)
++	def set_incoming_rate(self):
++		for d in self.items:
++			if d.s_warehouse:
++				args = self.get_args_for_incoming_rate(d)
++				d.basic_rate = get_incoming_rate(args)
++			elif d.allow_zero_valuation_rate and not d.s_warehouse:
++				d.basic_rate = 0.0
++			elif d.t_warehouse and not d.basic_rate:
++				d.basic_rate = get_valuation_rate(d.item_code, d.t_warehouse,
++					self.doctype, self.name, d.allow_zero_valuation_rate,
++					currency=erpnext.get_company_currency(self.company), company=self.company)
+ 
+ 	def set_actual_qty(self):
+ 		allow_negative_stock = cint(frappe.db.get_value("Stock Settings", None, "allow_negative_stock"))
